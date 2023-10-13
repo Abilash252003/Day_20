@@ -1,0 +1,29 @@
+//100 Days of RTL//
+
+//Abilash P//
+
+//32:1 Multiplexer using 16:1 mux and 2:1 mux//
+
+
+module mux_32_to_1 (I0,  I1,  I2,  I3,  I4,  I5,  I6,  I7,  I8,  I9,  I10, I11, I12, I13, I14, I15, 
+                    I16, I17, I18, I19, I20, I21, I22, I23, I24, I25, I26, I27, I28, I29, I30, I31,
+                    S0, S1, S2, S3, S4, Y);
+
+input  I0, I1, I2, I3, I4, I5, I6, I7, I8, I9, I10, I11, I12, I13, I14, I15, 
+       I16, I17, I18, I19, I20, I21, I22, I23, I24, I25, I26, I27, I28, I29, I30, I31,
+       S0, S1, S2, S3, S4;
+output Y;
+
+wire w1, w2;
+
+mux_16_to_1 M1 (.I0(I0),   .I1(I1),   .I2(I2),   .I3(I3),   .I4(I4),   .I5(I5),   .I6(I6),   .I7(I7),   
+                .I8(I8),   .I9(I9),   .I10(I10), .I11(I11), .I12(I12), .I13(I13), .I14(I14), .I15(I15),
+                .S0(S0),   .S1(S1),   .S2(S2),   .S3(S3),   .Y(w1));
+
+mux_16_to_1 M2 (.I0(I16),  .I1(I17),  .I2(I18),  .I3(I19),  .I4(I20),  .I5(I21),  .I6(I22),  .I7(I23), 
+                .I8(I24),  .I9(I25),  .I10(I26), .I11(I27), .I12(I28), .I13(I29), .I14(I30), .I15(I31),
+                .S0(S0),   .S1(S1),   .S2(S2),   .S3(S3),   .Y(w2));
+
+mux_2_to_1 M3  (.I0(w1),   .I1(w2),   .S0(S4),   .Y(Y));
+
+endmodule
