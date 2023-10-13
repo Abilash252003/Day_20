@@ -1,0 +1,62 @@
+//100 Days of RTL//
+
+//Abilash P//
+
+//32:1 Multiplexer in gate or structural level modeling//
+
+
+module mux_32_to_1 (I0,  I1,  I2,  I3,  I4,  I5,  I6,  I7,  I8,  I9,  I10, I11, I12, I13, I14, I15, 
+                    I16, I17, I18, I19, I20, I21, I22, I23, I24, I25, I26, I27, I28, I29, I30, I31,
+                    S0, S1, S2, S3, S4, Y);
+
+input  I0, I1, I2, I3, I4, I5, I6, I7, I8, I9, I10, I11, I12, I13, I14, I15, 
+       I16, I17, I18, I19, I20, I21, I22, I23, I24, I25, I26, I27, I28, I29, I30, I31,
+       S0, S1, S2, S3, S4;
+output Y;
+
+wire P0, P1, P2, P3, P4;
+wire W0, W1, W2, W3, W4, W5, W6, W7, W8, W9, WA, WB, WC, WD, WE, WF;
+wire A0, A1, A2, A3, A4, A5, A6, A7, A8, A9, AA, AB, AC, AD, AE, AF;
+
+not n1 (P0, S0);
+not n2 (P1, S1);
+not n3 (P2, S2);
+not n4 (P3, S3);
+not n5 (P4, S4);
+
+and a1 (W0, P4, P3, P2, P1, P0, I0);
+and a2 (W1, P4, P3, P2, P1, S0, I1);
+and a3 (W2, P4, P3, P2, S1, P0, I2);
+and a4 (W3, P4, P3, P2, S1, S0, I3);
+and a5 (W4, P4, P3, S2, P1, P0, I4);
+and a6 (W5, P4, P3, S2, P1, S0, I5);
+and a7 (W6, P4, P3, S2, S1, P0, I6);
+and a8 (W7, P4, P3, S2, S1, S0, I7);
+and a9 (W8, P4, S3, P2, P1, P0, I8);
+and a10(W9, P4, S3, P2, P1, S0, I9);
+and a11(WA, P4, S3, P2, S1, P0, I10);
+and a12(WB, P4, S3, P2, S1, S0, I11);
+and a13(WC, P4, S3, S2, P1, P0, I12);
+and a14(WD, P4, S3, S2, P1, S0, I13);
+and a15(WE, P4, S3, S2, S1, P0, I14);
+and a16(WF, P4, S3, S2, S1, S0, I15);
+and a17(A0, S4, P3, P2, P1, P0, I16);
+and a18(A1, S4, P3, P2, P1, S0, I17);
+and a19(A2, S4, P3, P2, S1, P0, I18);
+and a20(A3, S4, P3, P2, S1, S0, I19);
+and a21(A4, S4, P3, S2, P1, P0, I20);
+and a22(A5, S4, P3, S2, P1, S0, I21);
+and a23(A6, S4, P3, S2, S1, P0, I22);
+and a24(A7, S4, P3, S2, S1, S0, I23);
+and a25(A8, S4, S3, P2, P1, P0, I24);
+and a26(A9, S4, S3, P2, P1, S0, I25);
+and a27(AA, S4, S3, P2, S1, P0, I26);
+and a28(AB, S4, S3, P2, S1, S0, I27);
+and a29(AC, S4, S3, S2, P1, P0, I28);
+and a30(AD, S4, S3, S2, P1, S0, I29);
+and a31(AE, S4, S3, S2, S1, P0, I30);
+and a32(AF, S4, S3, S2, S1, S0, I31);
+
+or  o1 (Y,  W0, W1, W2, W3, W4, W5, W6, W7, W8, W9, WA, WB, WC, WD, WE, WF, A0, A1, A2, A3, A4, A5, A6, A7, A8, A9, AA, AB, AC, AD, AE, AF);
+
+endmodule
