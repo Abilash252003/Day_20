@@ -1,0 +1,60 @@
+//100 Days of RTL//
+
+//Abilash P//
+
+//32:1 Multiplexer using only 2:1 mux//
+
+
+module mux_32_to_1 (I0,  I1,  I2,  I3,  I4,  I5,  I6,  I7,  I8,  I9,  I10, I11, I12, I13, I14, I15, 
+                    I16, I17, I18, I19, I20, I21, I22, I23, I24, I25, I26, I27, I28, I29, I30, I31,
+                    S0, S1, S2, S3, S4, Y);
+
+input  I0, I1, I2, I3, I4, I5, I6, I7, I8, I9, I10, I11, I12, I13, I14, I15, 
+       I16, I17, I18, I19, I20, I21, I22, I23, I24, I25, I26, I27, I28, I29, I30, I31,
+       S0, S1, S2, S3, S4;
+output Y;
+
+wire w1, w2, w3, w4, w5, w6, w7, w8, w9, wA, wB, wC, wD, wE, wF, wG;
+wire y1, y2, y3, y4, y5, y6, y7, y8;
+wire z1, z2, z3, z4;
+wire p1, p2;
+
+mux_2_to_1 M1 (.I0(I0),  .I1(I1),  .S0(S0), .Y(w1));
+mux_2_to_1 M2 (.I0(I2),  .I1(I3),  .S0(S0), .Y(w2));
+mux_2_to_1 M3 (.I0(I4),  .I1(I5),  .S0(S0), .Y(w3));
+mux_2_to_1 M4 (.I0(I6),  .I1(I7),  .S0(S0), .Y(w4));
+mux_2_to_1 M5 (.I0(I8),  .I1(I9),  .S0(S0), .Y(w5));
+mux_2_to_1 M6 (.I0(I10), .I1(I11), .S0(S0), .Y(w6));
+mux_2_to_1 M7 (.I0(I12), .I1(I13), .S0(S0), .Y(w7));
+mux_2_to_1 M8 (.I0(I14), .I1(I15), .S0(S0), .Y(w8));
+mux_2_to_1 M9 (.I0(I16), .I1(I17), .S0(S0), .Y(w9));
+mux_2_to_1 MA (.I0(I18), .I1(I19), .S0(S0), .Y(wA));
+mux_2_to_1 MB (.I0(I20), .I1(I21), .S0(S0), .Y(wB));
+mux_2_to_1 MC (.I0(I22), .I1(I23), .S0(S0), .Y(wC));
+mux_2_to_1 MD (.I0(I24), .I1(I25), .S0(S0), .Y(wD));
+mux_2_to_1 ME (.I0(I26), .I1(I27), .S0(S0), .Y(wE));
+mux_2_to_1 MF (.I0(I28), .I1(I29), .S0(S0), .Y(wF));
+mux_2_to_1 MG (.I0(I30), .I1(I31), .S0(S0), .Y(wG));
+
+
+mux_2_to_1 MH (.I0(w1),  .I1(w2),  .S0(S1), .Y(y1));
+mux_2_to_1 MI (.I0(w3),  .I1(w4),  .S0(S1), .Y(y2));
+mux_2_to_1 MJ (.I0(w5),  .I1(w6),  .S0(S1), .Y(y3));
+mux_2_to_1 MK (.I0(w7),  .I1(w8),  .S0(S1), .Y(y4));
+mux_2_to_1 ML (.I0(w9),  .I1(wA),  .S0(S1), .Y(y5));
+mux_2_to_1 MM (.I0(wB),  .I1(wC),  .S0(S1), .Y(y6));
+mux_2_to_1 MN (.I0(wD),  .I1(wE),  .S0(S1), .Y(y7));
+mux_2_to_1 MO (.I0(wF),  .I1(wG),  .S0(S1), .Y(y8));
+
+
+mux_2_to_1 MP (.I0(y1),  .I1(y2),  .S0(S2), .Y(z1));
+mux_2_to_1 MQ (.I0(y3),  .I1(y4),  .S0(S2), .Y(z2));
+mux_2_to_1 MR (.I0(y5),  .I1(y6),  .S0(S2), .Y(z3));
+mux_2_to_1 MS (.I0(y7),  .I1(y8),  .S0(S2), .Y(z4));
+
+mux_2_to_1 MT (.I0(z1),  .I1(z2),  .S0(S3), .Y(p1));
+mux_2_to_1 MU (.I0(z3),  .I1(z4),  .S0(S3), .Y(p2));
+
+mux_2_to_1 MV (.I0(p1),  .I1(p2),  .S0(S4),  .Y(Y));
+
+endmodule
